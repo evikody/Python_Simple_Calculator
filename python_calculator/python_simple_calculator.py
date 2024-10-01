@@ -34,3 +34,16 @@ def calculate(expression):
         return str(eval(expression))
     except:
         return "Error"
+
+# Enter the game loop
+running = True
+while running:
+    # a.) Fill the screen with background color
+    screen.fill(WHITE)
+
+    # b.) Render input text and result
+    input_surface = font.render(input_text, True, BLACK)
+    screen.blit(input_surface, (20, 50))
+
+    result_surface = font.render(result_text, True, GREEN)
+    screen.blit(result_surface, (20, 100))
