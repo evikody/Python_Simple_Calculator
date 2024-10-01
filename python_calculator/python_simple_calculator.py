@@ -14,3 +14,11 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GRAY = (200, 200, 200)
 GREEN = (0, 255, 0)
+
+# Set font
+font = pygame.font.Font(None, 50)
+
+# Initialize calculator state
+input_text = ""
+result_text = ""
+
