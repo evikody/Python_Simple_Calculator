@@ -73,3 +73,11 @@ while running:
 
     for (text, x, y) in button_texts:
         draw_button(text, x, y, 80, 80)
+
+# e.) Update the display
+    pygame.display.flip()
+    pygame.time.delay(30)
+
+# Quit pygame
+pygame.quit()
+sys.exit()
