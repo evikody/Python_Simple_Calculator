@@ -47,3 +47,19 @@ while running:
 
     result_surface = font.render(result_text, True, GREEN)
     screen.blit(result_surface, (20, 100))
+
+    # c.) Handle events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RETURN:
+                result_text = calculate(input_text)
+                input_text = ""
+            elif event.key == pygame.K_BACKSPACE:
+                input_text = input_text[:-1]
+            else:
+                key = event.unicode
+                if key in '0123456789+-*/.':
+                    input_text += key
+                    
