@@ -22,3 +22,15 @@ font = pygame.font.Font(None, 50)
 input_text = ""
 result_text = ""
 
+# Define a function to draw buttons
+def draw_button(text, x, y, w, h):
+    pygame.draw.rect(screen, GRAY, (x, y, w, h), border_radius=8)
+    label = font.render(text, True, BLACK)
+    screen.blit(label, (x + w // 2 - label.get_width() // 2, y + h // 2 - label.get_height() // 2))
+
+# Define a function to evaluate the input expression
+def calculate(expression):
+    try:
+        return str(eval(expression))
+    except:
+        return "Error"
