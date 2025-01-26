@@ -69,6 +69,11 @@ while running:
     result_surface = font.render(result_text, True, GREEN)
     screen.blit(result_surface, (20, 100))
 
+    # Display the history
+    for i, entry in enumerate(history):
+        history_surface = font.render(entry, True, BLACK)
+        screen.blit(history_surface, (20, 150 + i * 30))
+
     # c.) Handle events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -78,7 +83,12 @@ while running:
             if result_text:  # Reset input if there's a result
                 input_text = ""
                 result_text = ""
-
+        # Update during calculation
+        elif event.key == pygame.K_RETURN:
+            input_text = sanitize_input(input_text)
+            result_text = calculate(input_text)
+            add_to_history(input_text, result_text)
+            input_text = ""
         elif event.key == pygame.K_BACKSPACE:
                 input_text = input_text[:-1]
         else:
