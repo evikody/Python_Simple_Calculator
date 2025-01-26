@@ -31,6 +31,9 @@ def draw_button(text, x, y, w, h):
     label = font.render(text, True, BLACK)
     screen.blit(label, (x + w // 2 - label.get_width() // 2, y + h // 2 - label.get_height() // 2))
 
+# Define a function to prevent invalid expressions
+def sanitize_input(input_text):
+
 # Define a function to evaluate the input expression
 def calculate(expression):
     try:
@@ -63,18 +66,18 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-         # If the user presses a key after calculating a result, clear the input for a new calculation
-         elif event.type == pygame.KEYDOWN:
+        # If the user presses a key after calculating a result, clear the input for a new calculation
+        elif event.type == pygame.KEYDOWN:
             if result_text:  # Reset input if there's a result
                 input_text = ""
                 result_text = ""
 
         elif event.key == pygame.K_BACKSPACE:
                 input_text = input_text[:-1]
-            else:
-                key = event.unicode
-                if key in '0123456789+-*/.':
-                    input_text += key
+        else:
+            key = event.unicode
+            if key in '0123456789+-*/.':
+                input_text += key
 
 # d.) Define buttons and draw them
     button_texts = [
