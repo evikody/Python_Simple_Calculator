@@ -52,7 +52,7 @@ def calculate(expression):
 def add_to_history(input_text, result_text):
     # Modify the history list to global
     global history
-    if len(history) >= 10:  # Keep only the last 10 entries
+    if len(history) >= 5:  # Keep only the last 5 entries
         history.pop(0)
     history.append(f"{input_text} = {result_text}")
 
@@ -70,9 +70,10 @@ while running:
     screen.blit(result_surface, (20, 100))
 
     # Display the history
+    pygame.draw.rect(screen, (220, 220, 220), (0, 150, WIDTH, 120))  # Background for history
     for i, entry in enumerate(history):
         history_surface = font.render(entry, True, BLACK)
-        screen.blit(history_surface, (20, 150 + i * 30))
+        screen.blit(history_surface, (20, 160 + i * 25))
 
     # c.) Handle events
     for event in pygame.event.get():
