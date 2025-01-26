@@ -6,7 +6,7 @@ import re
 pygame.init()
 
 # Set up screen dimensions and caption
-WIDTH, HEIGHT = 500, 600
+WIDTH, HEIGHT = 500, 700
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Simple Calculator")
 
