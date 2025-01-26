@@ -83,18 +83,18 @@ while running:
             if result_text:  # Reset input if there's a result
                 input_text = ""
                 result_text = ""
-        # Update during calculation
-        elif event.key == pygame.K_RETURN:
-            input_text = sanitize_input(input_text)
-            result_text = calculate(input_text)
-            add_to_history(input_text, result_text)
-            input_text = ""
-        elif event.key == pygame.K_BACKSPACE:
-                input_text = input_text[:-1]
-        else:
-            key = event.unicode
-            if key in '0123456789+-*/.':
-                input_text += key
+            # Update during calculation
+            elif event.key == pygame.K_RETURN:
+                input_text = sanitize_input(input_text)
+                result_text = calculate(input_text)
+                add_to_history(input_text, result_text)
+                input_text = ""
+            elif event.key == pygame.K_BACKSPACE:
+                    input_text = input_text[:-1]
+            else:
+                key = event.unicode
+                if key in '0123456789+-*/.':
+                    input_text += key
 
 # d.) Define buttons and draw them
     button_texts = [
