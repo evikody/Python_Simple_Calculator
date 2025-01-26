@@ -18,6 +18,7 @@ GREEN = (0, 255, 0)
 
 # Set font
 font = pygame.font.Font(None, 50)
+history_font = pygame.font.Font(None, 30)
 
 # Initialize calculator state
 input_text = ""
