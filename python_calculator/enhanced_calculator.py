@@ -22,6 +22,9 @@ font = pygame.font.Font(None, 50)
 input_text = ""
 result_text = ""
 
+# Store calculation history
+history = []
+
 # Define a function to draw buttons
 def draw_button(text, x, y, w, h):
     pygame.draw.rect(screen, GRAY, (x, y, w, h), border_radius=8)
