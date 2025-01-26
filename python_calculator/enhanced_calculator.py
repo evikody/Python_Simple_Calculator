@@ -38,6 +38,10 @@ def calculate(expression):
     except:
         return "Error"
 
+# Define a function to add calculations to history
+def add_to_history(input_text, result_text):
+
+
 # Enter the game loop
 running = True
 while running:
