@@ -1,5 +1,6 @@
 import pygame
 import sys
+import re
 
 # Initialize pygame
 pygame.init()
@@ -33,6 +34,12 @@ def draw_button(text, x, y, w, h):
 
 # Define a function to prevent invalid expressions
 def sanitize_input(input_text):
+    # Remove invalid consecutive operators
+    input_text = re.sub(r'[+\-*/]{2,}', '', input_text)
+    # Prevent starting with invalid operators
+    if input_text and input_text[0] in '+*/':
+        input_text = input_text[1:]
+    return input_text
 
 # Define a function to evaluate the input expression
 def calculate(expression):
