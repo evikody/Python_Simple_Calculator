@@ -40,7 +40,11 @@ def calculate(expression):
 
 # Define a function to add calculations to history
 def add_to_history(input_text, result_text):
-
+    # Modify the history list to global
+    global history
+    if len(history) >= 10:  # Keep only the last 10 entries
+        history.pop(0)
+    history.append(f"{input_text} = {result_text}")
 
 # Enter the game loop
 running = True
