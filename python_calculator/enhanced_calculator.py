@@ -73,7 +73,7 @@ while running:
     # Display the history
     pygame.draw.rect(screen, (220, 220, 220), (0, 150, WIDTH, 120))  # Background for history
     for i, entry in enumerate(history):
-        history_surface = font.render(entry, True, BLACK)
+        history_surface = history_font.render(entry, True, BLACK)
         screen.blit(history_surface, (20, 160 + i * 25))
 
     # c.) Handle events
