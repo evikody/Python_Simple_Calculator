@@ -63,11 +63,13 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RETURN:
-                result_text = calculate(input_text)
+         # If the user presses a key after calculating a result, clear the input for a new calculation
+         elif event.type == pygame.KEYDOWN:
+            if result_text:  # Reset input if there's a result
                 input_text = ""
-            elif event.key == pygame.K_BACKSPACE:
+                result_text = ""
+
+        elif event.key == pygame.K_BACKSPACE:
                 input_text = input_text[:-1]
             else:
                 key = event.unicode
