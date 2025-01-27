@@ -6,7 +6,7 @@ import re
 pygame.init()
 
 # Set up screen dimensions and caption
-WIDTH, HEIGHT = 500, 700
+WIDTH, HEIGHT = 580, 700
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Simple Calculator")
 
@@ -36,9 +36,9 @@ def draw_button(text, x, y, w, h):
 # Define a function to prevent invalid expressions
 def sanitize_input(input_text):
     # Remove invalid consecutive operators
-    input_text = re.sub(r'[+\-*/]{2,}', '', input_text)
+    input_text = re.sub(r'[+\-*/^]{2,}', '', input_text)
     # Prevent starting with invalid operators
-    if input_text and input_text[0] in '+*/':
+    if input_text and input_text[0] in '+*/^':
         input_text = input_text[1:]
     return input_text
 
@@ -111,24 +111,25 @@ while running:
                 add_to_history(input_text, result_text)
                 input_text = ""
             elif event.key == pygame.K_BACKSPACE:
-                    input_text = input_text[:-1]
+                input_text = input_text[:-1]
             else:
                 key = event.unicode
-                if key in '0123456789+-*/.':
+                if key in '0123456789+-*/.^':  # Include ^ in the allowed keys
                     input_text += key
 
-# d.) Define buttons and draw them
+    # d.) Define buttons and draw them
     button_texts = [
         ('7', 50, 300), ('8', 150, 300), ('9', 250, 300), ('/', 350, 300),
         ('4', 50, 400), ('5', 150, 400), ('6', 250, 400), ('*', 350, 400),
         ('1', 50, 500), ('2', 150, 500), ('3', 250, 500), ('-', 350, 500),
         ('0', 50, 600), ('.', 150, 600), ('+', 250, 600), ('=', 350, 600),
+        ('^', 450, 300),  # Add the caret button for power
     ]
 
     for (text, x, y) in button_texts:
         draw_button(text, x, y, 80, 80)
 
-# e.) Update the display
+    # e.) Update the display
     pygame.display.flip()
     pygame.time.delay(30)
 
