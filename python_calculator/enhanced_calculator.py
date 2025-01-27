@@ -42,10 +42,29 @@ def sanitize_input(input_text):
         input_text = input_text[1:]
     return input_text
 
+# Define a function to parse and adjust the expression for additional features
+def parse_expression(expression):
+    expression = expression.replace('^', '**')  # Handle power
+    expression = expression.replace('%', '/100')  # Convert percentage
+    # Add implicit multiplication (e.g., 2(3+1) -> 2*(3+1))
+    expression = re.sub(r'(\d)(\()', r'\1*(', expression)
+    return expression
+
+# Define a function to format result (truncate or convert to scientific notation)
+def format_result(result):
+    if len(result) > 10:  # Assume 10 is the max character length
+        try:
+            result = f"{float(result):.8g}"  # Convert to scientific notation
+        except:
+            pass
+    return result
+
 # Define a function to evaluate the input expression
 def calculate(expression):
     try:
-        return str(eval(expression))
+        parsed = parse_expression(expression)
+        result = str(eval(parsed))
+        return format_result(result)
     except:
         return "Error"
 
